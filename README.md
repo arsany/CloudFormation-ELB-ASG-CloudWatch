@@ -2,7 +2,7 @@ CloudFormation Project
 
 *For the diagram you can check CloudFormation.pdf*
 
-here is HA-Application using ELB - ASG and Cloud watch 
+Here is HA-Application using ELB-ASG and Cloud watch 
 
 using Create.sh bash file you can spacify stack-name , template-body and parameters
 
