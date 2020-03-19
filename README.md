@@ -32,11 +32,11 @@ oEstablish a minimum, maximum, and desired server count that scales up/down base
 •Security Group allowing only HTTP traffic from the load balancer to the instance(s)
 •Remote management ports such as SSH and RDP must not be open to the world
 •Some kind of automation or scripting that achieves the following:
-oInstall a web server (your choice – Apache and Nginx are common examples)
-oDeploys a simple “hello world” page for the web server to serve up
-oCan be written in the language of your choice (HTML, PHP, etc)
-oCan be sourced from the location of your choice (S3, cookbook file/ template, etc)
-oMust include the server’s hostname in the “hello world” presented to the user
+  Install a web server (your choice – Apache and Nginx are common examples)
+  Deploys a simple “hello world” page for the web server to serve up
+  Can be written in the language of your choice (HTML, PHP, etc)
+  Can be sourced from the location of your choice (S3, cookbook file/ template, etc)
+  Must include the server’s hostname in the “hello world” presented to the user 
 •All AWS resources must be created using Terraform or CloudFormation
 •No resources may be created or managed by hand other than EC2 SSH keys
 
