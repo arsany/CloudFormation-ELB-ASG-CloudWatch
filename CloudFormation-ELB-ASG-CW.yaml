@@ -24,26 +24,29 @@ Resources:
           ToPort: 80
           CidrIp: 0.0.0.0/0
 
-  WebServerSecurityGroup:
+  WebServerSecurityGroupTargetSG:
     Type: AWS::EC2::SecurityGroup
     Properties:
         GroupDescription: Allow http Ingress and All traffic Egress
         VpcId:
            Fn::ImportValue:
              !Sub "${EnvironmentName}-VPCID"
-        SecurityGroupIngress:
-        - IpProtocol: tcp
-          FromPort: 80
-          ToPort: 80
-          CidrIp: 0.0.0.0/0
 
 
-        SecurityGroupEgress:
-        - IpProtocol: tcp
-          FromPort: 0
-          ToPort: 65535
-          CidrIp: 0.0.0.0/0
-
+  InboundRule:
+    Type: AWS::EC2::SecurityGroupIngress
+    Properties:
+      IpProtocol: tcp
+      FromPort: 80
+      ToPort: 80
+      SourceSecurityGroupId:
+        Fn::GetAtt:
+        - LBSecurityGroup
+        - GroupId
+      GroupId:
+        Fn::GetAtt:
+        - WebServerSecurityGroupTargetSG
+        - GroupId
 
   S3ReadRole:
     Type: "AWS::IAM::Role"
@@ -100,7 +103,7 @@ Resources:
 
       ImageId: ami-0ce21b51cb31a48b8
       SecurityGroups:
-      - Ref: WebServerSecurityGroup
+      - Ref: WebServerSecurityGroupTargetSG
 
       InstanceType: t2.micro
       BlockDeviceMappings:
