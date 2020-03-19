@@ -24,10 +24,10 @@ Finaly you will get output with DNSname from ELB to access the Application.
 REQUIREMENTS
 •VPC with private/public subnets and all required dependent infrastructure (DO NOT USE THEDEFAULT VPC)
 •ELB to be used to register web server instances
-oInclude a simple health check to make sure the web servers are responding
-oThe health check should automatically replace instances if they are unhealthy, and theinstances should come back into service on their own
+  Include a simple health check to make sure the web servers are responding
+  The health check should automatically replace instances if they are unhealthy, and theinstances should come back into service on their own
 •Auto Scaling Group and Launch Configuration that launches EC2 instances and registers themto the ELB
-oEstablish a minimum, maximum, and desired server count that scales up/down based ona metric of your choice (and be able to demonstrate a scaling event)
+  Establish a minimum, maximum, and desired server count that scales up/down based ona metric of your choice (and be able to demonstrate a scaling event)
 •Security Group allowing HTTP traffic to load balancer from anywhere (not directly to theinstance(s))
 •Security Group allowing only HTTP traffic from the load balancer to the instance(s)
 •Remote management ports such as SSH and RDP must not be open to the world
@@ -36,7 +36,6 @@ oEstablish a minimum, maximum, and desired server count that scales up/down base
   Deploys a simple “hello world” page for the web server to serve up
   Can be written in the language of your choice (HTML, PHP, etc)
   Can be sourced from the location of your choice (S3, cookbook file/ template, etc)
-  Must include the server’s hostname in the “hello world” presented to the user 
+  Must include the server’s hostname in the “hello world” presented to the user
 •All AWS resources must be created using Terraform or CloudFormation
 •No resources may be created or managed by hand other than EC2 SSH keys
-
